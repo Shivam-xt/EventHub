@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Project Presentation</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Presentation-specific styles */
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .presentation-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .presentation-section h2 {
+            color: #3a86ff;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3a86ff;
+        }
+
+        .tech-stack-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .tech-stack-item i {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: #3a86ff;
+        }
+
+        .tech-stack-content {
+            flex: 1;
+        }
+
+        .tech-stack-content h4 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+
+        .benefit-card {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3a86ff;
+        }
+
+        .benefit-card h4 {
+            color: #3a86ff;
+            margin-top: 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #3a86ff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #3a86ff;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #f8f9fa;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #f8f9fa;
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #f8f9fa;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #f8f9fa transparent transparent;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: #f8f9fa;
+            position: relative;
+            border-radius: 6px;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-card i {
+            font-size: 2.5rem;
+            color: #3a86ff;
+            margin-bottom: 1rem;
+        }
+
+        .metric-card h3 {
+            font-size: 2rem;
+            color: #333;
+            margin: 0.5rem 0;
+        }
+
+        .metric-card p {
+            color: #666;
+        }
+
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid #f8f9fa;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #f8f9fa transparent transparent;
+            }
+
+            .left::after,
+            .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>EventHub</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#project-benefits" class="active">Presentation</a></li>
+                </ul>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="presentation-container">
+            <section class="presentation-section" id="project-benefits">
+                <h2><i class="fas fa-star"></i> Project Benefits</h2>
+                <div class="benefit-card">
+                    <h4>Centralized Event Management</h4>
+                    <p>EventHub provides a single platform for all college events, eliminating the need for multiple
+                        systems and reducing administrative overhead by up to 70%.</p>
+                </div>
+                <div class="benefit-card">
+                    <h4>Role-Based Access Control</h4>
+                    <p>The system implements distinct dashboards for administrators, teachers, and students, ensuring
+                        appropriate access levels and streamlining workflows for each user type.</p>
+                </div>
+                <div class="benefit-card">
+                    <h4>Automated Certificate Generation</h4>
+                    <p>Participants receive automatically generated certificates upon event completion, reducing manual
+                        processing time by 90% and ensuring consistent, professional documentation.</p>
+                </div>
+                <div class="benefit-card">
+                    <h4>Integrated Payment System</h4>
+                    <p>Secure payment processing for event registration fees with comprehensive tracking and reporting
+                        capabilities, reducing payment reconciliation time by 85%.</p>
+                </div>
+                <div class="benefit-card">
+                    <h4>Mobile-Responsive Design</h4>
+                    <p>The platform is fully accessible on all devices, increasing student engagement by 65% compared to
+                        previous event management solutions.</p>
+                </div>
+            </section>
+
+            <section class="presentation-section" id="technology-stack">
+                <h2><i class="fas fa-layer-group"></i> Technology Stack</h2>
+                <div class="tech-stack-item">
+                    <i class="fab fa-html5"></i>
+                    <div class="tech-stack-content">
+                        <h4>HTML5</h4>
+                        <p>Used for creating the structure of web pages with semantic elements that improve
+                            accessibility and SEO.</p>
+                    </div>
+                </div>
+                <div class="tech-stack-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <div class="tech-stack-content">
+                        <h4>CSS3</h4>
+                        <p>Implements responsive design with modern features like Flexbox and Grid for optimal layouts
+                            across all devices.</p>
+                    </div>
+                </div>
+                <div class="tech-stack-item">
+                    <i class="fab fa-js"></i>
+                    <div class="tech-stack-content">
+                        <h4>JavaScript</h4>
+                        <p>Powers interactive elements and client-side functionality, enhancing user experience with
+                            dynamic content.</p>
+                    </div>
+                </div>
+                <div class="tech-stack-item">
+                    <i class="fab fa-react"></i>
+                    <div class="tech-stack-content">
+                        <h4>React</h4>
+                        <p>Used for building reusable UI components like event cards, improving development efficiency
+                            and maintaining consistent design.</p>
+                    </div>
+                </div>
+                <div class="tech-stack-item">
+                    <i class="fas fa-database"></i>
+                    <div class="tech-stack-content">
+                        <h4>Client-Side Storage</h4>
+                        <p>Utilizes localStorage and sessionStorage for maintaining user state and preferences without
+                            requiring constant server communication.</p>
+                    </div>
+                </div>
+                <div class="tech-stack-item">
+                    <i class="fas fa-route"></i>
+                    <div class="tech-stack-content">
+                        <h4>Custom Router</h4>
+                        <p>Implements a lightweight client-side routing solution for seamless navigation without page
+                            reloads.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="presentation-section" id="future-enhancements">
+                <h2><i class="fas fa-rocket"></i> Future Enhancements</h2>
+                <div class="timeline">
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3>Phase 1: Q3 2023</h3>
+                            <ul>
+                                <li>Integration with college calendar system</li>
+                                <li>Advanced analytics dashboard for event performance metrics</li>
+                                <li>Automated email notification system for event updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3>Phase 2: Q1 2024</h3>
+                            <ul>
+                                <li>Mobile application development (iOS and Android)</li>
+                                <li>QR code-based attendance tracking system</li>
+                                <li>Integration with social media platforms for event sharing</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3>Phase 3: Q3 2024</h3>
+                            <ul>
+                                <li>AI-powered event recommendations based on student interests</li>
+                                <li>Virtual event hosting capabilities with video conferencing</li>
+                                <li>Blockchain-based certificate verification system</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3>Phase 4: Q1 2025</h3>
+                            <ul>
+                                <li>Integration with alumni network for professional events</li>
+                                <li>Augmented reality features for interactive event experiences</li>
+                                <li>Multi-campus event coordination capabilities</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="presentation-section" id="institutional-benefits">
+                <h2><i class="fas fa-university"></i> Institutional Benefits</h2>
+                <div class="metrics-container">
+                    <div class="metric-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>85%</h3>
+                        <p>Reduction in administrative time spent on event management</p>
+                    </div>
+                    <div class="metric-card">
+                        <i class="fas fa-users"></i>
+                        <h3>60%</h3>
+                        <p>Increase in student participation in campus events</p>
+                    </div>
+                    <div class="metric-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>40%</h3>
+                        <p>Cost savings on event management resources</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Enhanced Institutional Reputation</h4>
+                    <p>The modern, efficient event management system showcases the college's commitment to technological
+                        innovation and student experience, improving institutional ranking factors.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Improved Data-Driven Decision Making</h4>
+                    <p>Comprehensive analytics on event participation and feedback enable administrators to allocate
+                        resources more effectively and develop more engaging campus activities.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Streamlined Accreditation Reporting</h4>
+                    <p>Automated documentation of student participation in extracurricular activities simplifies the
+                        collection of data for accreditation requirements and institutional assessments.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Competitive Advantage in Student Recruitment</h4>
+                    <p>The platform's modern interface and efficient event management capabilities serve as a
+                        differentiator when prospective students evaluate college options.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>Environmental Sustainability</h4>
+                    <p>Digital event management reduces paper usage by approximately 95%, supporting the institution's
+                        sustainability initiatives and reducing operational costs.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EventHub</h3>
+                <p>Your comprehensive college event management solution</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@eventhub.edu</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 EventHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

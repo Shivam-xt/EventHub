@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard | EventHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="dashboard-body teacher-dashboard">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>EventHub</h2>
+                <span class="role-badge teacher-role">Teacher</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> My Events</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Participants</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Event Analytics</a></li>
+                    <li><a href="#"><i class="fas fa-tasks"></i> Submissions</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="index.html" data-router-link><i class="fas fa-home"></i> Main Site</a></li>
+                    <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">2</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="teacher-avatar.png" alt="Teacher" onerror="this.src='https://via.placeholder.com/40'">
+                        <span id="user-name" class="teacher-username">Teacher User</span>
+                    </div>
+                    <div class="user-actions">
+                        <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="dashboard-welcome">
+                    <h1>Welcome to Teacher Dashboard</h1>
+                    <p>Manage your events and participants</p>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="stat-info">
+                            <h3>My Events</h3>
+                            <p class="stat-number">2</p>
+                            <p class="stat-change positive">+1 <span>from last month</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>Total Participants</h3>
+                            <p class="stat-number">145</p>
+                            <p class="stat-change positive">+12% <span>from last month</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="stat-info">
+                            <h3>Submissions</h3>
+                            <p class="stat-number">78</p>
+                            <p class="stat-change positive">+15% <span>from last month</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                        <div class="stat-info">
+                            <h3>Feedback</h3>
+                            <p class="stat-number">42</p>
+                            <p class="stat-change positive">+8% <span>from last month</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-sections">
+                    <!-- My Events Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2>My Events</h2>
+                            <button class="btn btn-primary"><i class="fas fa-plus"></i> Create Event</button>
+                        </div>
+                        <div class="section-content">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Event Name</th>
+                                            <th>Date</th>
+                                            <th>Category</th>
+                                            <th>Registrations</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Annual Cultural Festival</td>
+                                            <td>May 15, 2023</td>
+                                            <td>Arts</td>
+                                            <td>85</td>
+                                            <td><span class="status-badge upcoming">Upcoming</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-users"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Inter-College Sports Tournament</td>
+                                            <td>June 10, 2023</td>
+                                            <td>Sports</td>
+                                            <td>60</td>
+                                            <td><span class="status-badge upcoming">Upcoming</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-users"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Payment Records Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2>Student Payment Records</h2>
+                            <select id="event-filter" class="form-control">
+                                <option value="all">All Events</option>
+                                <!-- Event options will be loaded here -->
+                            </select>
+                        </div>
+                        <div class="section-content">
+                            <div class="table-responsive">
+                                <table class="data-table" id="teacher-payment-records-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Event</th>
+                                            <th>Amount</th>
+                                            <th>Payment Date</th>
+                                            <th>Status</th>
+                                            <th>Certificate</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Payment records will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Participants Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2>Recent Participants</h2>
+                            <button class="btn btn-secondary">View All</button>
+                        </div>
+                        <div class="section-content">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Event</th>
+                                            <th>Registration Date</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>John Doe</td>
+                                            <td>john@example.com</td>
+                                            <td>Annual Cultural Festival</td>
+                                            <td>April 10, 2023</td>
+                                            <td><span class="status-badge active">Confirmed</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jane Smith</td>
+                                            <td>jane@example.com</td>
+                                            <td>Annual Cultural Festival</td>
+                                            <td>April 12, 2023</td>
+                                            <td><span class="status-badge active">Confirmed</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Mike Johnson</td>
+                                            <td>mike@example.com</td>
+                                            <td>Inter-College Sports Tournament</td>
+                                            <td>April 15, 2023</td>
+                                            <td><span class="status-badge pending">Pending</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="events.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if user is logged in and has teacher role
+            const currentUser = Auth.getCurrentUser();
+            if (!currentUser || currentUser.role !== Auth.ROLES.TEACHER) {
+                // Redirect to login page if not teacher
+                alert('You do not have permission to access this page');
+                window.location.href = 'index.html';
+            }
+
+            // Logout functionality
+            document.getElementById('logout-link').addEventListener('click', function (e) {
+                e.preventDefault();
+                Auth.logout();
+            });
+        });
+    </script>
+</body>
+
+</html>

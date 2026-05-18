@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | EventHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="dashboard-body admin-dashboard">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>EventHub</h2>
+                <span class="role-badge admin-role">Admin</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> User Management</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Event Management</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> System Settings</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="index.html" data-router-link><i class="fas fa-home"></i> Main Site</a></li>
+                    <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <div class="header-search">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-user">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="admin-avatar.png" alt="Admin" onerror="this.src='https://via.placeholder.com/40'">
+                        <span id="user-name" class="admin-username">Admin User</span>
+                    </div>
+                    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+                </div>
+            </header>
+            <div>
+                <input type="text" id="event-title" placeholder="Event Name">
+                <input type="date" id="event-date">
+                <input type="time" id="event-time">
+                <button onclick="addEvent()">Create Event</button>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="dashboard-welcome">
+                    <h1>Welcome to Admin Dashboard</h1>
+                    <p>Manage all aspects of the EventHub platform</p>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>Total Users</h3>
+                            <p class="stat-number">1,250</p>
+                            <p class="stat-change positive">+15% <span>from last month</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="stat-info">
+                            <h3>Active Events</h3>
+                            <p class="stat-number">42</p>
+                            <p class="stat-change positive">+8% <span>from last month</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-ticket-alt"></i></div>
+                        <div class="stat-info">
+                            <h3>Registrations</h3>
+                            <p class="stat-number">3,845</p>
+                            <p class="stat-change positive">+12% <span>from last month</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                        <div class="stat-info">
+                            <h3>Feedback</h3>
+                            <p class="stat-number">256</p>
+                            <p class="stat-change negative">-3% <span>from last month</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-sections">
+                    <!-- Event Management Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2>Event Management</h2>
+                            <button class="btn btn-primary" id="create-event-btn"><i class="fas fa-plus"></i> Create
+                                Event</button>
+                        </div>
+                        <div class="section-content">
+                            <div id="events-container" class="admin-events-grid">
+                                <!-- Event cards will be loaded here -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Payment Records Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2>Payment Records</h2>
+                            <button class="btn btn-primary" id="create-payment-btn"><i class="fas fa-plus"></i> Create
+                                Payment Record</button>
+                        </div>
+                        <div class="section-content">
+                            <div class="table-responsive">
+                                <table class="data-table" id="payment-records-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Student</th>
+                                            <th>Event</th>
+                                            <th>Amount</th>
+                                            <th>Payment Date</th>
+                                            <th>Status</th>
+                                            <th>Certificate</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Payment records will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- User Management Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2>User Management</h2>
+                            <button class="btn btn-primary"><i class="fas fa-plus"></i> Add User</button>
+                        </div>
+                        <div class="section-content">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Admin User</td>
+                                            <td>admin@example.com</td>
+                                            <td><span class="role-badge admin-role">Admin</span></td>
+                                            <td><span class="status-badge active">Active</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Teacher User</td>
+                                            <td>teacher@example.com</td>
+                                            <td><span class="role-badge teacher-role">Teacher</span></td>
+                                            <td><span class="status-badge active">Active</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Student User</td>
+                                            <td>student@example.com</td>
+                                            <td><span class="role-badge student-role">Student</span></td>
+                                            <td><span class="status-badge active">Active</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Event Management Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2>Event Management</h2>
+                            <button class="btn btn-primary"><i class="fas fa-plus"></i> Create Event</button>
+                        </div>
+                        <div class="section-content">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Event Name</th>
+                                            <th>Date</th>
+                                            <th>Category</th>
+                                            <th>Registrations</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Annual Cultural Festival</td>
+                                            <td>May 15, 2023</td>
+                                            <td>Arts</td>
+                                            <td>245</td>
+                                            <td><span class="status-badge upcoming">Upcoming</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Inter-College Sports Tournament</td>
+                                            <td>June 10, 2023</td>
+                                            <td>Sports</td>
+                                            <td>189</td>
+                                            <td><span class="status-badge upcoming">Upcoming</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Annual Tech Symposium</td>
+                                            <td>July 5, 2023</td>
+                                            <td>Technology</td>
+                                            <td>156</td>
+                                            <td><span class="status-badge upcoming">Upcoming</span></td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Event Creation Modal -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Event</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="event-form">
+                    <div class="form-group">
+                        <label for="event-title">Event Title</label>
+                        <input type="text" id="event-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">Description</label>
+                        <textarea id="event-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date">Date</label>
+                        <input type="date" id="event-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-time">Time</label>
+                        <input type="time" id="event-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-category">Category</label>
+                        <select id="event-category" required>
+                            <option value="">Select Category</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Culture">Culture</option>
+                            <option value="Career">Career</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Academic">Academic</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-teacher">Assign Teacher</label>
+                        <select id="event-teacher" required>
+                            <option value="">Select Teacher</option>
+                            <!-- Teacher options will be loaded dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-name">Teacher's Name</label>
+                        <input type="text" id="teacher-name" placeholder="Enter teacher's full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-fee">Participation Fee (₹)</label>
+                        <input type="number" id="event-fee" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-location">Location</label>
+                        <input type="text" id="event-location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-image">Event Image</label>
+                        <input type="file" id="event-image" accept="image/*" required>
+                        <div id="image-preview" class="image-preview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-restricted">Restricted Event</label>
+                        <input type="checkbox" id="event-restricted">
+                        <span class="checkbox-label">Limit participation to approved users only</span>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Create Event</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-event">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="events.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if user is logged in and has admin role
+            const currentUser = Auth.getCurrentUser();
+            if (!currentUser || currentUser.role !== Auth.ROLES.ADMIN) {
+                // Redirect to login page if not admin
+                alert('You do not have permission to access this page');
+                window.location.href = 'index.html';
+            }
+
+            // Logout functionality
+            document.getElementById('logout-link').addEventListener('click', function (e) {
+                e.preventDefault();
+                Auth.logout();
+            });
+        });
+    </script>
+</body>
+
+</html>
